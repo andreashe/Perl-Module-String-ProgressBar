@@ -68,6 +68,7 @@ use vars qw($VERSION);
 #                info            =>  '',    # text after the bar
 #                print_return    =>  0,     # whether it should return after last value with new line
 #                text_length     =>  14,    # length of the text before the bar
+#                allow_overflow  =>  0,     # allow values to exceed 100%
 #                
 #                
 sub new { # $object ( max => $int )
@@ -89,6 +90,7 @@ sub new { # $object ( max => $int )
                 info            =>  '',
                 print_return    =>  0,
                 text_length     =>  14,
+                allow_overflow  =>  0,
                };
 
     # asign default values
@@ -127,7 +129,7 @@ sub update {
     my $self = shift;
     my $value = shift;
     
-    if ( $value > $self->{'max'}  ){
+    if ( !$self->{'allow_overflow'} && $value > $self->{'max'}  ){
         $value = $self->{'max'};
     }
     
@@ -308,6 +310,7 @@ It can take several key value pairs (here you see also the default values):
                info            =>  '',    # text after the bar
                print_return    =>  0,     # whether it should return after last value with new line
                text_length     =>  14,    # length of the text before the bar
+               allow_overflow  =>  0,     # allow values to exceed 100%
 
 
 
