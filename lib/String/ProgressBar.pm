@@ -1,12 +1,11 @@
 package String::ProgressBar; ## Produces a simple progress bar
 
 
-our $VERSION='0.03';
-
-
 use strict;
 use Carp;
 use vars qw($VERSION);
+
+our $VERSION='0.04';
 
 
 
